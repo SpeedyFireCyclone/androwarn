@@ -22,7 +22,7 @@
 # Global imports
 import re
 import logging
-from HTMLParser import HTMLParser
+from html.parser import HTMLParser
 
 # Logguer
 log = logging.getLogger('log')

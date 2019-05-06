@@ -21,6 +21,7 @@
 
 # Global imports
 import logging
+import codecs
 
 # Logguer
 log = logging.getLogger('log')
@@ -123,8 +124,8 @@ def grab_certificate_information(apk) :
         cert_info.append("Serial number: %s" % cert.serial_number)
         cert_info.append("Hash algorithm: %s" % cert.hash_algo)
         cert_info.append("Signature algorithm: %s" % cert.signature_algo)
-        cert_info.append("SHA-1 thumbprint: %s" % cert.sha1.encode('hex'))
-        cert_info.append("SHA-256 thumbprint: %s" % cert.sha256.encode('hex'))
+        cert_info.append("SHA-1 thumbprint: %s" % codecs.encode(cert.sha1, 'hex'))
+        cert_info.append("SHA-256 thumbprint: %s" % codecs.encode(cert.sha256, 'hex'))
         cert_info.append("")
     
     return cert_info

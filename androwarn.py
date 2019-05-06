@@ -42,7 +42,7 @@ log.addHandler(handler)
 
 # Script version
 VERSION = '1.5'
-print '[+] Androwarn version %s\n' % VERSION
+print('[+] Androwarn version %s\n' % VERSION)
 
 # Options definition
 parser = argparse.ArgumentParser(description="version: " + VERSION)
@@ -68,7 +68,7 @@ def main():
         parser.error("Please specify a valid log level")
 
     # Input
-    print "[+] Loading the APK file..."
+    print("[+] Loading the APK file...")
     a, d, x = AnalyzeAPK(options.input)
     package_name = grab_application_package_name(a)
     

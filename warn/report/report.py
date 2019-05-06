@@ -76,7 +76,7 @@ def dump_analysis_results(data, file_descriptor) :
     flush_simple_string("===== Androwarn Report =====", file_descriptor)
     if data:
         for item in data:
-            for category, element_tuple in item.iteritems():
+            for category, element_tuple in item.items():
                 
                 if isinstance(category,str):
                     flush_simple_string("[+] %s" % category.encode('ascii','ignore').replace('_',' ').title(), file_descriptor)
@@ -165,7 +165,7 @@ def filter_analysis_results(data, verbosity) :
         purge_category = []
         
         for category_index, item in enumerate(data) :
-            for category, element_tuple in item.iteritems() :
+            for category, element_tuple in item.items() :
                 purge_tuple = []
                 
                 for tuple_index, tuple in enumerate(element_tuple) :
@@ -243,15 +243,15 @@ def generate_report(package_name, data, verbosity, report, output) :
         @param verbosity : desired verbosity
         @param report : report type
     """
-    output_file = os.path.join(os.getcwdu(), package_name + "_%s" % str(int(time.time()))) if not(output) else output
+    output_file = os.path.join(os.getcwd(), package_name + "_%s" % str(int(time.time()))) if not(output) else output
     
     filter_analysis_results(data,verbosity)
     
-    if cmp(report, REPORT_TXT) == 0:
+    if report == REPORT_TXT:
         generate_report_txt(data,verbosity, report, output_file)
     
-    if cmp(report, REPORT_HTML) == 0:
+    if report == REPORT_HTML:
         generate_report_html(data,verbosity, report, output_file)
     
-    if cmp(report, REPORT_JSON) == 0:
+    if report == REPORT_JSON:
         generate_report_json(data,verbosity, report, output_file)

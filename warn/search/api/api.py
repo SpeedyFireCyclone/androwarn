@@ -37,7 +37,7 @@ def grab_classes_list(d, x) :
         
         @rtype : a list of the canonical name (ex "android.widget.GridView") of all the classes used
     """
-    result = map(lambda i: convert_dex_to_canonical(i.get_vm_class().get_name()), x.get_classes())
+    result = list(map(lambda i: convert_dex_to_canonical(i.get_vm_class().get_name()), x.get_classes()))
     result.sort()     
     return result
 
@@ -48,7 +48,7 @@ def grab_internal_classes_list(d, x) :
         @rtype : a list of the canonical name (ex "android.widget.GridView") of the internal classes used
     """
     
-    result = map(lambda i: convert_dex_to_canonical(i.get_vm_class().get_name()), x.get_internal_classes())
+    result = list(map(lambda i: convert_dex_to_canonical(i.get_vm_class().get_name()), x.get_internal_classes()))
     result.sort()     
     return result
 
@@ -58,7 +58,7 @@ def grab_external_classes_list(d, x) :
         
         @rtype : a list of the canonical name (ex "android.widget.GridView") of the external packages used
     """
-    result = map(lambda i: convert_dex_to_canonical(i.get_vm_class().get_name()), x.get_external_classes())
+    result = list(map(lambda i: convert_dex_to_canonical(i.get_vm_class().get_name()), x.get_external_classes()))
     result.sort()     
     return result
 

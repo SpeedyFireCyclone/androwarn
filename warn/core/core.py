@@ -60,7 +60,7 @@ def match_current_instruction(current_instruction, registers_found) :
     
     
     # String concat
-    current_instruction = "{} {}".format(current_instruction.get_name().decode('utf-8'),current_instruction.get_output())
+    current_instruction = "{} {}".format(current_instruction.get_name(),current_instruction.get_output())
     
     # Returned values init
     instruction_name = ''
@@ -234,7 +234,7 @@ def backtrace_registers_before_call(x, method, calling_index) :
 
             instruction_name, local_register_number, local_register_value, registers_found = match_current_instruction(current_instruction, registers_found)
             
-            if cmp(instruction_name, APUT) == 0:
+            if instruction_name == APUT:
                 try :
                     list_index_to_be_changed = relevant_registers.index(str(local_register_value))
                     del(relevant_registers[int(local_register_value)]) 
@@ -243,12 +243,12 @@ def backtrace_registers_before_call(x, method, calling_index) :
                 except :
                     log.debug("'%s' does not exist anymore in the relevant_registers list" % local_register_value)
             
-            if (cmp(instruction_name, MOVE_RESULT) == 0) and (local_register_number in relevant_registers):
+            if instruction_name == MOVE_RESULT and local_register_number in relevant_registers:
                 try:
                     past_instruction = instruction_list[i-1]
                     p_instruction_name, p_local_register_number, p_local_register_value, registers_found =  match_current_instruction(past_instruction, registers_found)
                     
-                    if cmp(p_instruction_name, INVOKE_NO_REGISTER) == 0:
+                    if p_instruction_name == INVOKE_NO_REGISTER:
                         registers_found[local_register_number] = p_local_register_value
                     
                     else:
@@ -344,7 +344,7 @@ def relevant_registers_for_the_method(instruction) :
             if int(register_start_number) > int(register_end_number) :
                 log.error("invoke-kind/range incoherent: # of the start register is lower than the end one")
             else :
-                relevant_registers = [ str(i) for i in xrange(int(register_start_number), int(register_end_number))]
+                relevant_registers = [ str(i) for i in range(int(register_start_number), int(register_end_number))]
                 # +1 because range does not provide the higher boundary value
         
     return relevant_registers
@@ -375,7 +375,7 @@ def get_register_value(index, registers) :
     # Index - 1, list starts at index 0
     if index < len(registers) :
         dict = registers[index]
-        return dict.values()[0]
+        return list(dict.values())[0]
     else :
         return ERROR_VALUE_NOT_FOUND
 

@@ -90,7 +90,7 @@ def detect_SMS_interception(a,x) :
                         if structural_analysis_results :
                             formatted_str.append("This application disables incoming SMS notifications")
                     
-    except Exception, e :
+    except Exception as e :
         log.error("detect_SMS_interception(): %s" % e)  
     
     return formatted_str

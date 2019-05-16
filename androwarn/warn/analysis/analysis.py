@@ -24,7 +24,7 @@ import sys
 import logging
 
 # Androwarn modules import
-from warn.search.search import *
+from androwarn.warn.search.search import *
 
 # Logguer
 log = logging.getLogger('log')

@@ -28,9 +28,9 @@ import argparse
 
 # Androwarn modules import
 from androguard.misc import AnalyzeAPK
-from warn.search.search import grab_application_package_name
-from warn.analysis.analysis import perform_analysis
-from warn.report.report import generate_report
+from androwarn.warn.search.search import grab_application_package_name
+from androwarn.warn.analysis.analysis import perform_analysis
+from androwarn.warn.report.report import generate_report, dump_analysis_results
 
 # Logger definition
 log = logging.getLogger('log')

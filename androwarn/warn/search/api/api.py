@@ -24,8 +24,8 @@ import re
 import logging
 
 # Androwarn modules import
-from warn.core.core import *
-from warn.util.util import *
+from androwarn.warn.core.core import *
+from androwarn.warn.util.util import *
 
 # Logguer
 log = logging.getLogger('log')

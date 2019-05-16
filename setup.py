@@ -18,9 +18,5 @@ This analysis leads to the generation of a report, according to a technical deta
     packages=find_packages(),
     include_package_data=True,
     install_requires=requirements,
-    entry_points={
-        'console_scripts': [
-            'androwarn=androwarn.androwarn:main'
-        ]
-    }
+    scripts=['androwarn.py']
 )

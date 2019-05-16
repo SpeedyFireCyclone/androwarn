@@ -23,7 +23,7 @@
 import logging
 
 # Androwarn modules import
-from warn.util.util import *
+from androwarn.warn.util.util import *
 
 # Logguer
 log = logging.getLogger('log')
